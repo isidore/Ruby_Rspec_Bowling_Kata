@@ -1,5 +1,6 @@
 require "bundler/setup"
 require "untitled"
+$track_failed_passed = false
 $failed_file = "fakeit.counter.fail.txt"
 $passed_file = "fakeit.counter.pass.txt"
 $java = "\"C:\\Program Files\\OpenJDK\\jdk-15.0.1\\bin\\java.exe\""
@@ -31,11 +32,13 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
-  config.after(:each) do |example|
-    if example.exception
-      increase_count($failed_file)
-    else
-      increase_count($passed_file)
+  if ($track_failed_passed)
+    config.after(:each) do |example|
+      if example.exception
+        increase_count($failed_file)
+      else
+        increase_count($passed_file)
+      end
     end
   end
 end
