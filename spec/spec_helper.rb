@@ -1,5 +1,4 @@
 require "bundler/setup"
-require "untitled"
 $track_failed_passed = false
 $failed_file = "fakeit.counter.fail.txt"
 $passed_file = "fakeit.counter.pass.txt"
