@@ -6,7 +6,7 @@
 /pkg/
 /spec/reports/
 /tmp/
-
+.idea/
 
 fakeit.counter.*
 # rspec failure tracking
